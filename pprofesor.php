@@ -1,1 +1,1 @@
-Adios
+Conflicto resuelto
