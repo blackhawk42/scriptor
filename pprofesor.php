@@ -1,1 +1,1 @@
-Aprendiendo GIT
+Conflicto resuelto
