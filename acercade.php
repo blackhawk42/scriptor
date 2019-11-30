@@ -29,7 +29,7 @@
 				<td>
 					<h1 style="background-color:rgb(0, 0, 0);" align="center">Scriptor-Master</h1>
 					<p style="font-size:130%;" align="left"><br>
-					Nosotros somos un grupo de 3 personas que estamos interesados en ayudarte a mejorar tu ortografía a traves de nuestra página web.<br>
+					Nosotros somos un grupo de personas que estamos interesados en ayudarte a mejorar tu ortografía a traves de nuestra página web.<br>
 					El registro dentro del portal es gratuito y nuestro servicio esta diseñado para alumnos que quieran realizar ejercitaciones y para
 					profesores que necesiten crear trabajos nuevos para sus alumnos de una manera diferente, divertida y sobre todo fácil de utilizar.<br>
 					</p>
