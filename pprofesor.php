@@ -12,7 +12,7 @@
 	<div>
 		<ul>
 			<li><img src="img/logo.png" alt="logo" width = "" height="20"></li>
-			<li><a href="index.php">Scriptor</a></li>
+			<li><a href="index.php">Cerrar sesión</a></li>
 			<li><a href="pprofesor.php">Home</a></li>
 			<li><a href="crear.php">Nuevo Juego</a></li>
 			<li><a href="califs.html">Calificaciones</a></li>

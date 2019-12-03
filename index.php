@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -9,6 +11,13 @@
     <script src="script.js"></script>
   </head>
   <body>
+
+  	<?php if(!empty($user)): ?>
+  	<br> Bienvenido. <?= $user['username'] ?>
+  	<br> Ingresaste satisfactoriamente a nuetra aplicación
+  	<a href ="logout.php">Cerrar Sesión</a>
+  	<?php else: ?>
+
 	<!-- Menú -->
 	<div>
 		<ul>
@@ -62,5 +71,6 @@
 	<div class="footer">
 		Scriptor - 2019. <br>
 	</div>
+	<?php endif; ?>
   </body>
 </html>
