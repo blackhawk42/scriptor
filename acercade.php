@@ -41,8 +41,14 @@
 		</table>
 		
 			
-		
 	<br>
+<a class="twitter-timeline" data-width="250" data-height="450" data-theme="light" href="https://twitter.com/DCespedesH?ref_src=twsrc%5Etfw">Tweets de nuestro profesor</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	
+	<br>
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v5.0"></script>
+
+<div class="fb-comments" data-href="http://localhost/itesm/web/ortografia/juegoprueba.php" data-width="520" data-numposts="5"></div>
 	<br>
 	<!--Footer-->
 	<div class="footer">
