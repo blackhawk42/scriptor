@@ -12,7 +12,7 @@
 	<div>
 		<ul>
 			<li><img src="img/logo.png" alt="logo" width = "" height="20"></li>
-			<li><a href="index.php">Scriptor</a></li>
+			<li><a href="logout.php">Cerrar sesión</a></li>
 			<li><a href="palumno.php">Home</a></li>
 			<li><a href="pin.php">Nuevo Juego</a></li>
 		</ul>
@@ -20,9 +20,11 @@
 	
 	<div id="cuerpo"> 
 		<form>
-		Ingrese el pin:<input type="number"><br>
-		  <input type="submit" value="Enviar">
-
+			<h2 align="center">Ingrese el pin:</h2>
+		<input  type="text" name="numberPin" placeholder="PIN" align="center" >
+		  	<div align="center">
+		  		<input type="submit" value="Enviar">
+			</div>
 
 		</form>
 	</div> 
