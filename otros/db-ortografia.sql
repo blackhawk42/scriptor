@@ -62,6 +62,17 @@ CREATE TABLE IF NOT EXISTS achievement(
     achievement_image VARCHAR(255) 
 );
 
+-- agregar logros
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Buen Promedio','Jugadores con promedio arriba de 85','/img/buenpromedio.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Juego Publicado','El jugador a publicado un juego','/img/juegopublicado.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Jugador Pro','El jugador a jugado mas de 10 juegos','/img/jugadorpro.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Máximo Puntaje','El jugador obtuvo un 100','/img/maximopuntaje.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Primer Juego','El jugador ha jugado su primer juego','/img/primerjuego.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Red Social','El jugador ha publicado su score con el boton red social','/img/redsocial.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Revisar Calificaciones','El jugador ha consultado sus calificaciones','/img/revisarcalifs.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Top 5','El jugador se encuentra entre los 5 mejores jugadores del sitio','/img/top5.jpg');
+INSERT INTO achievement(achievement_name, achievement_description, achievement_image) VALUES('Veloz','El jugador ha acabado en menos de 5 minutos un juego','/img/veloz.jpg');
+
 -- tabla que relaciona usuario con un logro obtenido
 CREATE TABLE IF NOT EXISTS user_achievement(
     user_achievement_id INT AUTO_INCREMENT PRIMARY KEY,

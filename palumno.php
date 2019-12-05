@@ -44,12 +44,36 @@ if(count($results) > 0){
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum ligula non purus gravida volutpat. Donec nec dui sit amet tortor dignissim efficitur.  Duis a lectus non ex aliquet lacinia a nec libero. Proin hendrerit tempor eros, eu ornare lacus gravida sed. Phasellus sed condimentum tellus. Ut eleifend justo diam, at blandit velit finibus sed. Cras lacinia lectus a mattis iaculis. </p>
 		</div> 
 		<div id="principal"> 
+<<<<<<< HEAD
 			<br><br>
 			<h1>Bienvenido <?= $user['first_name']?>, </h1> 
 			<br><br><br>
 			
 			<h2>Informacion personal</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum ligula non purus gravida volutpat. Donec nec dui sit amet tortor dignissim efficitur. Duis a lectus non ex aliquet lacinia a nec libero. Proin hendrerit tempor eros, eu ornare lacus gravida sed. Phasellus sed condimentum tellus. Ut eleifend justo diam, at blandit velit finibus sed. Cras lacinia lectus a mattis iaculis. Duis odio massa, rhoncus et lectus at, interdum finibus risus. Donec ac sapien efficitur, bibendum tortor nec, pellentesque orci. Quisque ut lobortis lacus. Sed vel massa eu augue pretium consequat. Ut mattis nibh eget ultrices sollicitudin. Nulla semper, justo sed consectetur scelerisque, dolor eros tincidunt magna, vitae gravida quam enim sit amet risus. Donec posuere diam vel quam consectetur iaculis.</p>
+=======
+			<h1>Alumno</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum ligula non purus gravida volutpat. Donec nec dui sit amet tortor dignissim efficitur. Duis a lectus non ex aliquet lacinia a nec libero. Proin hendrerit tempor eros, eu ornare lacus gravida sed. Phasellus sed condimentum tellus. Ut eleifend justo diam, at blandit velit finibus sed. Cras lacinia lectus a mattis iaculis. Duis odio massa, rhoncus et lectus at, interdum finibus risus. Donec ac sapien efficitur, bibendum tortor nec, pellentesque orci. Quisque ut lobortis lacus. Sed vel massa eu augue pretium consequat. Ut mattis nibh eget ultrices sollicitudin. Nulla semper, justo sed consectetur scelerisque, dolor eros tincidunt magna, vitae gravida quam enim sit amet risus. Donec posuere diam vel quam consectetur iaculis.</p>
+			<h1>Logros</h1>
+			<table>
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+</table>
+
+>>>>>>> 9e5dcbe8c99fa1d028473acee95fa26caf64c3f9
 		</div> 
 	</div> 
  
