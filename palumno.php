@@ -14,7 +14,7 @@ if(count($results) > 0){
 	$user = $results;
 }
 
-?>		
+?>
 	
 <!DOCTYPE html>
 <html lang="es">
