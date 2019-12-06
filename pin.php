@@ -19,9 +19,9 @@
 	</div>
 	
 	<div id="cuerpo"> 
-		<form>
+		<form method="POST" action="juegoprueba.php">
 			<h2 align="center">Ingrese el pin:</h2>
-		<input  type="text" name="numberPin" placeholder="PIN" align="center" >
+		<input  type="text" name="game_id" placeholder="PIN" align="center" >
 		  	<div align="center">
 		  		<input type="submit" value="Enviar">
 			</div>

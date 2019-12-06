@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+require 'database.php';
+
+$records = $conn-> prepare('SELECT user_id, first_name, last_name, username, email FROM users WHERE user_id=:id');
+$records->bindParam(':id', $_SESSION['user_id']);
+$records->execute();
+$results = $records->fetch();
+
+$user = null;
+
+if(count($results) > 0){
+	$user = $results;
+}
+
+$sql = 'SELECT game_attributes FROM game WHERE game_id = ?';
+$stmt = $conn->prepare($sql);
+
+if( !$stmt->execute(array($_POST['game_id'])) ){
+	echo 'echo <script>alert("No");</script>';
+}
+
+$json = $stmt->fetch()['game_attributes'];
+$game_attributes = json_decode($json);
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,75 +37,25 @@
 <title>Juego de Prueba.</title>
 </head>
 <body>
-<div><h2>Elige la palabra incorrecta<h2></div>
+<div><font color=black ><h2 aling="center">Da click en las 3 palabras que consideres incorrectas<h2></font></div>
 <div>
 	<p>
-		Un león que vagaba por el bosque se clavó una espina en la pata, y al encontrar un pastor, le pidió que se la extranjera. El pastor lo hizo, y el león, que estaba saciado porque acababa de devorar a otro pastor, siguió su camino sin hacerle daño. Algún tiempo después, el pastor fue condenado, a causa de una falsa acusación, a ser arrojado a los leones en el anfiteatro. Cuando las fieras estaban por devorarlo, una de ellas dijo:
-		— Este es el hombre que me saco la espina de la pata.
-		Al oír esto, los otros leones honorablemente se abstuvieron, y el que habló se comió él solo al Pastor.
+		<?php echo $game_attributes->texto; ?>
 	</p>
 </div>
-<script>
-    var words = $( "p" ).first().text().split( /\s+/ );
-	var text = words.join( "</span> <span>" );
-	var intentos = 0;
-	var score = 0;
-	$( "p" ).first().html( "<span>" + text + "</span>" );
-	$( "span" ).on( "click", function() {
-	$( this ).css( "background-color", "orange" );
-	var prueba = $(this).text();
-	console.log(prueba);
-		
-		if(prueba == 'saco'){
-			intentos = intentos + 1;
-			
-			if(intentos > 10){
-				score = 0;
-				console.log('Ha perdido, su score es: 0');
-			}else{
-				score = 110-intentos*10;
-				
-				alert('ha ganado en '+intentos.toString()+' intentos, su score es: ' + score.toString());
-			}
-		}else{
-			intentos = intentos + 1;
-			console.log('incorrecto, ya lleva '+intentos.toString()+' intentos');
-			
-			if(intentos > 10){
-				score = 0;
-				console.log('Ha perdido, su score es: 0');
-			}
-		}
-
-		var elem = document.getElementById('subject');
-   		elem.value = score;
-	});
-</script>
-
 
 
 <br><br>
 
 
 
-<form name="form" action="juegoprueba.php" method="post">
-  <input type="hidden" name="dato" id="subject" value="0">
+<form id="form-puntaje" action="palumno.php" method="post">
+  <input type="hidden" name="puntaje" value="0">
+  <input type="hidden" name="game_id" value=<?php echo "\"" . $_POST['game_id'] . "\"" ?>>
+  <input type="hidden" name="time_start" value=<?php echo "\"" . date('Y-m-d\TH:i:s') . "\"" ?>>
   <input type="submit" value="Enviar" name="submit">
 </form>
 <br><br>
-
-<?php 
-
-
-if(isset($_POST['submit']))
-{
-	$score = $_POST['dato'];
-	echo(htmlspecialchars("Score del juego desde php: ".$score));
-
-	//aqui ya se puede mandar el score a la BD.
-} 
-
-?>
 
 <br><br>
 
@@ -85,6 +63,62 @@ if(isset($_POST['submit']))
 
 
 </body>
+
+<script>
+	function is_in(str, array) {
+		for(var i = 0; i < array.length; i++) {
+			if(str == array[i]) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	var form = document.getElementById('form-puntaje');
+
+	var incorrectas = <?php echo "['" . implode("', '", $game_attributes->incorrectas) . "'];"; ?>
+	var incorrectas_totales = incorrectas.length;
+
+    var words = $( "p" ).first().text().split( /\s+/ );
+	var text = words.join( "</span> <span>" );
+	var intentos = 0;
+	var score = 0;
+	var times_correct = 0;
+
+	$( "p" ).first().html( "<span>" + text + "</span>" );
+	$( "span" ).on( "click", function() {
+		$( this ).css( "background-color", "orange" );
+		var prueba = $(this).text().match(/[A-Za-z]*/)[0];
+		console.log(prueba);
+
+		intentos += 1;
+		
+		if(is_in(prueba, incorrectas)) {
+			times_correct += 1;
+			incorrectas = incorrectas.filter(function(val) {return prueba != val;});
+			console.log(incorrectas);
+			
+			if (times_correct == incorrectas_totales) {
+					score = 130-intentos*10;
+					form.puntaje.value = score;
+					alert('	Ha ganado en '+intentos.toString()+' intentos, su score es: ' + score.toString());
+			}
+
+			console.log(times_correct);
+		}
+		else if(intentos > 10){
+			score = 0;
+			form.puntaje.value = score;
+			alert('Ha perdido, su score es: 0');
+		}
+
+		else {
+			console.log('incorrecto, ya lleva '+intentos.toString()+' intentos');
+		}
+	});
+</script>
+
 </html>
 
 <!-- https://www.w3resource.com/jquery-exercises/2/jquery-fundamental-exercise-67.php -->

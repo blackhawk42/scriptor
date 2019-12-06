@@ -51,11 +51,11 @@
 
 		<h2 align="center">Ingrese sus datos:</h2>
 		<form action="registro.php" method="post" required align="center">
-			Usuario:<input type="text" name="usuario" placeholder="Usuario"><br>
-			Contraseña: <input type="password" name="password" placeholder="Contraseña"><br>
-			Correo Electrónico: <input type="text" name="correo" placeholder="Correo Electrónico"><br>
-			Nombre(s): <input type="text" name="nombre" placeholder="Nombres(s)"><br>
-			Apellido: <input type="text" name="apellido" placeholder="Apellido"><br>
+			Usuario:<input type="text" name="usuario" placeholder="Usuario" required><br>
+			Contraseña: <input type="password" name="password" placeholder="Contraseña" required><br>
+			Correo Electrónico: <input type="text" name="correo" placeholder="Correo Electrónico" required><br>
+			Nombre(s): <input type="text" name="nombre" placeholder="Nombres(s)" required><br>
+			Apellido: <input type="text" name="apellido" placeholder="Apellido" required><br>
 			Tipo usuario: <br>
 			<input type="radio" name="tipoUsuario" value=1> Alumno<br>
 			<input type="radio" name="tipoUsuario" value=2> Maestro<br><br>

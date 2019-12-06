@@ -1,3 +1,38 @@
+<?php
+session_start();
+
+require 'database.php';
+
+$records = $conn-> prepare('SELECT user_id, first_name, last_name, username, email FROM users WHERE user_id=:id');
+$records->bindParam(':id', $_SESSION['user_id']);
+$records->execute();
+$results = $records->fetch();
+
+$user = null;
+
+if(count($results) > 0){
+	$user = $results;
+}
+
+if(!empty($_POST)) {
+	$sql = 'INSERT INTO game(author, game_type_id, game_attributes, time_creation) VALUES (?,?,?,?)';
+	$stmt = $conn->prepare($sql);
+
+	$json = json_encode(array(
+		'texto' => $_POST['texto'],
+		'incorrectas' => array($_POST['incorrecta1'], $_POST['incorrecta2'], $_POST['incorrecta3'])
+		));
+
+	if( $stmt->execute(array($user['user_id'], 1, $json, date('Y-m-d\TH:i:s'))) ) {
+		echo "<script>alert('Exito');</script>";
+	}
+	else {
+		echo "<script>alert('No');</script>";
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -14,14 +49,63 @@
 			<li><img src="img/logo.png" alt="logo" width = "" height="20"></li>
 			<li><a href="logout.php">Cerrar sesión</a></li>
 			<li><a href="pprofesor.php">Home</a></li>
+			<li><a href="crear.php">Nuevo Juego</a></li>
+			<li><a href="califs.php">Calificaciones</a></li>
 			
 		</ul>
 	</div>
-	
+	<div>
+		<h2 align="center">Empecemos creando un juego</h2>
+		
+			<form name="form" action="crear.php" method="post">
+					<table align="center">
+						<tr>
+							<td>
+  							Ingresa el párrafo completo
+  							</td>
+							<td>
+  							<input type="text" name="texto" id="texto" placeholder="Párrafo" required>
+  							</td>
+  						</tr>
+  						<tr>
+							<td>
+  							Ingresa la primera palabra incorrecta
+  							</td>
+							<td>
+  							<input type="text" name="incorrecta1" id="incorrecta1" placeholder="Palabra incorrecta 1" required>
+  							</td>
+  						</tr>
+  						<tr>
+							<td>
+  							Ingresa la segunda palabra incorrecta
+  							</td>
+							<td>
+  							<input type="text" name="incorrecta2" id="incorrecta2" placeholder="Palabra incorrecta 2" required>
+  							</td>
+  						</tr>
+  						<tr>
+							<td>
+  							Ingresa la tercer palabra incorrecta
+  							</td>
+							<td>
+  							<input type="text" name="incorrecta3" id="incorrecta3" placeholder="Palabra incorrecta 3" required>
+  							</td>
+  						</tr>
+  						<tr>
+  							<td>
+  								
+  							</td>
+  							<td>
+  								<input type="submit" value="Crear" name="submit">
+  							</td>
+  						</tr>
+  					</table>
+			</form>
+		
+	</div>
+	<br>
 	<div id="cuerpo"> 
-		<h2 align="center"><p>
-			This domain is established to be used for illustrative examples in documents. You may use this domain in examples without prior coordination or asking for permission.
-		</p></h2>
+		
 	</div> 
 	<script>
     	var words = $("p").first().text().split( /\s+/ );

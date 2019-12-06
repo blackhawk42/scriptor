@@ -3,7 +3,7 @@ session_start();
 
 require 'database.php';
 
-$records = $conn-> prepare('SELECT first_name, last_name, username, email FROM users WHERE user_id=:id');
+$records = $conn-> prepare('SELECT user_id, first_name, last_name, username, email FROM users WHERE user_id=:id');
 $records->bindParam(':id', $_SESSION['user_id']);
 $records->execute();
 $results = $records->fetch();
@@ -40,19 +40,57 @@ if(count($results) > 0){
 	
 	<div id="cuerpo"> 
 		<div id="lateral"> 
-			<img src="img/profile.png">
+			<img src="img/deportivo.jpg" width="" height="200">
 		</div> 
-		<div id="principal"> 
-		<br><br><br><br><br><br><br><br><br>
+		
+		<br><br><br><br><br><br><br><br><br><br><br>
+		
+		
+			<div id="principal"> 
 			
+				<h2><font color="black">Informacion personal</font></h2>
+				
+				<p>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></p>
+				<p>Username: <?= $user['username']?> </p>
+				<p>Email: <?= $user['email']?> </p>	
 			
-			<h2><font color="black">Informacion personal</font></h2>
-			<p>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></p>
-			<p>Username: <?= $user['username']?> </p>
-			<p>Email: <?= $user['email']?> </p>	
-		</div> 
+			</div> 
+
 
 	</div> 
+
+	<br>
+	<h2><font color="black">Juegos creados</font></h2>
+
+	<div>
+		<?php
+			require 'database.php';
+
+			$sql = "SELECT * FROM game WHERE author = ?";
+			$stmt = $conn->prepare($sql);
+			$stmt->execute(array($user['user_id']));
+			$games = $stmt->fetchAll();
+		?>
+		<font color="white">
+		<table  class="w3-table-all w3-xlarge">
+			<tr>
+				<th>PIN</th>
+				<th>Tiempo de creación</th>
+			</tr>
+			<?php
+				foreach ($games as $game) {
+					echo "<tr>";
+					echo "<td>" . $game['game_id'] . "</td>";
+					echo "<td align='center'>" . $game['time_creation'] . "</td>";
+ 					echo "</tr>";
+ 				}
+			?>
+
+		</table>
+		</font>
+		
+				
+	</div>
  
 	
 	<!--Footer-->
