@@ -34,26 +34,38 @@ $game_attributes = json_decode($json);
 <meta name="viewport" content="width=device-width">
 <link rel = "stylesheet" href = "css/estilo.css">
 
-<title>Juego de Prueba.</title>
+<title>Scriptor | Mejorado tu ortografía</title>
 </head>
 <body>
-<div><font color=black ><h2 aling="center">Da click en las 3 palabras que consideres incorrectas<h2></font></div>
-<div>
+	<!-- Menú -->
+	<div>
+		<ul>
+			<li><img src="img/logo.png" alt="logo" width = "" height="20"></li>
+		</ul>
+	</div>
+
+
+
+
+<div><font color=black><h1 align="center">Da click en las 3 palabras que consideres incorrectas</h1></font></div>
+<div><h2 align="center">
 	<p>
 		<?php echo $game_attributes->texto; ?>
 	</p>
+	</h2>
+</div>
+<div align="center">
+	<img src="img/inspector.png" width="300" height="">
+	<br><br>
 </div>
 
 
-<br><br>
 
-
-
-<form id="form-puntaje" action="palumno.php" method="post">
+<form id="form-puntaje" action="palumno.php" method="post" align="center">
   <input type="hidden" name="puntaje" value="0">
   <input type="hidden" name="game_id" value=<?php echo "\"" . $_POST['game_id'] . "\"" ?>>
   <input type="hidden" name="time_start" value=<?php echo "\"" . date('Y-m-d\TH:i:s') . "\"" ?>>
-  <input type="submit" value="Enviar" name="submit">
+  <input type="submit" value="Enviar" name="submit" >
 </form>
 <br><br>
 
@@ -118,6 +130,9 @@ $game_attributes = json_decode($json);
 		}
 	});
 </script>
+<div class="footer">
+		Scriptor - 2019. <br>
+	</div>
 
 </html>
 

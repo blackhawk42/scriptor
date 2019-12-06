@@ -47,32 +47,24 @@ if(!empty($_POST)) {
 			<li><a href="pin.php">Nuevo Juego</a></li>
 		</ul>
 	</div>
-	<h1 style="background-color:hsl(0, 100%, 0%);">Bienvenido <?= $user['first_name']?>, </h1> 
-	<div id="cuerpo"> 
-		<div id="lateral"> 
-			<img src="img/dragon.jpg" width="" height="200">
-		</div> 
+	<h1 style="background-color:hsl(0, 100%, 0%);" align="center">Bienvenido <?= $user['first_name']?> </h1> 
+	<div id="cuerpo" align="center"> 
+
+			<img src="img/alumno.png" width="" height="300" >
+
 		<div id="principal"> 
 
 
-		
-			
-
-
-			<br><br><br><br><br><br><br><br><br><br><br>
 			
 			
-			<h2><font color="black">Información personal</font></h2>
-			<p>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></p>
-			<p>Username: <?= $user['username']?> </p>
-			<p>Email: <?= $user['email']?> </p>
+			<h1><font color="black">Información personal</font></h1>
+			<p><h3>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></h2></p>
+			<p><h3>Username: <?= $user['username']?> </h2></p>
+			<p><h3>Email: <?= $user['email']?> </h2></p>
 
 		</div> 
-		<div><br>
-			<h2><font color="black">Logros</font></h2>
-		</div>
-	</div> 
- 
+	<br><br>
+
 	
 	<!--Footer-->
 	<div class="footer">

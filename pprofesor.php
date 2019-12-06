@@ -18,14 +18,14 @@ if(count($results) > 0){
 
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <title>Scriptor | Mejorado tu ortografía</title>
-    <link rel="stylesheet" href="css/estilo.css">
+<head>
+	<meta charset="utf-8">
+	<title>Scriptor | Mejorado tu ortografía</title>
+	<link rel="stylesheet" href="css/estilo.css">
 	<link rel="stylesheet" href="css/perfiles.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
+	<script src="script.js"></script>
+</head>
+<body>
 	<!-- Menú -->
 	<div>
 		<ul>
@@ -36,66 +36,79 @@ if(count($results) > 0){
 			<li><a href="califs.php">Calificaciones</a></li>
 		</ul>
 	</div>
-	<h1 style="background-color:hsl(0, 100%, 0%);">Bienvenido <?= $user['first_name']?>, </h1> 
+	<h1 style="background-color:hsl(0, 100%, 0%);" align="center">Bienvenido <?= $user['first_name']?> </h1> 
 	
-	<div id="cuerpo"> 
-		<div id="lateral"> 
-			<img src="img/deportivo.jpg" width="" height="200">
-		</div> 
+	<div id="cuerpo" align="center"> 
+
+		<img src="img/profe.png" width="" height="300">
+
 		
-		<br><br><br><br><br><br><br><br><br><br><br>
+		<br>
 		
 		
-			<div id="principal"> 
-			
-				<h2><font color="black">Informacion personal</font></h2>
-				
-				<p>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></p>
-				<p>Username: <?= $user['username']?> </p>
-				<p>Email: <?= $user['email']?> </p>	
-			
-			</div> 
-
-
-	</div> 
-
-	<br>
-	<h2><font color="black">Juegos creados</font></h2>
-
-	<div>
-		<?php
-			require 'database.php';
-
-			$sql = "SELECT * FROM game WHERE author = ?";
-			$stmt = $conn->prepare($sql);
-			$stmt->execute(array($user['user_id']));
-			$games = $stmt->fetchAll();
-		?>
-		<font color="white">
-		<table  class="w3-table-all w3-xlarge">
+		<table style="width:100%">
 			<tr>
-				<th>PIN</th>
-				<th>Tiempo de creación</th>
+				<td><h2 align="center"><font color="black">Informacion personal</font></h2></td>
+				<td><h2 align="center"><font color="black">Juegos creados</font></h2></td>
 			</tr>
-			<?php
-				foreach ($games as $game) {
-					echo "<tr>";
-					echo "<td>" . $game['game_id'] . "</td>";
-					echo "<td align='center'>" . $game['time_creation'] . "</td>";
- 					echo "</tr>";
- 				}
-			?>
+			<tr>
+				<td align="center">
+					<p>Nombre: <?= $user['first_name']?> <?= $user['last_name']?></p>
+					<p>Username: <?= $user['username']?> </p>
+					<p>Email: <?= $user['email']?> </p>	
+				</td>
+				<td align="center">
+					<?php
+					require 'database.php';
 
-		</table>
-		</font>
+					$sql = "SELECT * FROM game WHERE author = ?";
+					$stmt = $conn->prepare($sql);
+					$stmt->execute(array($user['user_id']));
+					$games = $stmt->fetchAll();
+					?>
+					<font color="white">
+						<table  class="w3-table-all w3-xlarge">
+							<tr>
+								<th>PIN</th>
+								<th>Tiempo de creación</th>
+							</tr>
+							<?php
+							foreach ($games as $game) {
+								echo "<tr>";
+								echo "<td>" . $game['game_id'] . "</td>";
+								echo "<td align='center'>" . $game['time_creation'] . "</td>";
+								echo "</tr>";
+							}
+							?>
+
+						</table>
+					</font>
+				</td>
+			</table>
+
+			
+			
+			
+			
+			
+
+
+
+
+
+			<br>
+			
+
+
+			
+			
+			
+		</div>
 		
-				
-	</div>
- 
-	
-	<!--Footer-->
-	<div class="footer">
-		Scriptor - 2019. <br>
-	</div>
-  </body>
-</html>
+		
+		<!--Footer-->
+		<div class="footer">
+			Scriptor - 2019. <br>
+		</div>
+	</body>
+	</html>
